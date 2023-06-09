@@ -1,0 +1,47 @@
+.dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.dropdown .dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Center the text vertically */
+  padding: 0px 10px;
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.dropdown .dropdown-icon {
+  width: 20px; /* Adjust the width of the SVG icon */
+  height: 20px;
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  margin-top: 5px;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 5px;
+  /* Add your styles for the dropdown menu here */
+}
+
+.dropdown .dropdown-menu li {
+  padding: 10px;
+}
+
+.dropdown .dropdown-menu li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

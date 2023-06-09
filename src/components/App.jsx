@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import Search from "./Search";
+import HomePage from "./HomePage";
 import "./../styles/App.css";
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -17,9 +17,7 @@ const App = () => {
         isDarkMode={isDarkMode}
         handleDarkModeToggle={handleDarkModeToggle}
       />
-      <div className="searchAndFilter">
-        <Search isDarkMode={isDarkMode} />
-      </div>
+      <HomePage isDarkMode={isDarkMode} />
     </div>
   );
 };

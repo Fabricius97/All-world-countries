@@ -1,5 +1,14 @@
 .homePage {
   display: flex;
-  padding: 50px;
   border: 1px solid red;
+  width: 100%;
+  padding: 50px;
+}
+
+.searchAndFilter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid red;
+  align-items: center;
 }

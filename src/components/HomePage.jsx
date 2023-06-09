@@ -1,8 +1,9 @@
 import React from "react";
 import "./../styles/HomePage.css";
 import Search from "./Search";
+import Dropdown from "./Dropdown";
 
-const HomePage = () => {
+const HomePage = ({ isDarkMode }) => {
   const handleSearch = (searchTerm) => {
     // Utför söklogiken här baserat på den givna söktermen
     console.log("Sökt efter:", searchTerm);
@@ -10,7 +11,10 @@ const HomePage = () => {
   };
   return (
     <div className="homePage">
-      <Search onSearch={handleSearch} />
+      <div className="searchAndFilter">
+        <Search isDarkMode={isDarkMode} onSearch={handleSearch} />
+        <Dropdown isDarkMode={isDarkMode} />
+      </div>
     </div>
   );
 };
