@@ -3,7 +3,7 @@ import "../styles/Dropdown.css";
 import lightarrowdown from "../assets/images/arrow-down-light.svg";
 import darkarrowdown from "../assets/images/arrow-down-dark.svg";
 
-const Dropdown = ({ isDarkMode }) => {
+const Dropdown = ({ isDarkMode, selectedRegion, setSelectedRegion }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Filter by Region");
 
@@ -12,6 +12,11 @@ const Dropdown = ({ isDarkMode }) => {
   };
 
   const handleSelectOption = (option) => {
+    if (option === "Filtered by Region") {
+      setSelectedRegion("");
+    } else {
+      setSelectedRegion(option);
+    }
     setSelectedOption(option);
     setIsOpen(false);
   };
@@ -39,10 +44,37 @@ const Dropdown = ({ isDarkMode }) => {
         <ul
           className={`dropdown-menu ${isDarkMode ? "dark-mode" : "light-mode"}`}
         >
-          <li onClick={() => handleSelectOption("Africa")}>Africa</li>
-          <li onClick={() => handleSelectOption("America")}>America</li>
-          <li onClick={() => handleSelectOption("Asia")}>Asia</li>
-          <li onClick={() => handleSelectOption("Europe")}>Europe</li>
+          <li
+            onClick={() => handleSelectOption("Filtered by Region")}
+            className={selectedRegion === "" ? "selected" : ""}
+            style={{ opacity: 0.4 }}
+          >
+            All
+          </li>
+          <li
+            onClick={() => handleSelectOption("Africa")}
+            className={selectedRegion === "Africa" ? "selected" : ""}
+          >
+            Africa
+          </li>
+          <li
+            onClick={() => handleSelectOption("Americas")}
+            className={selectedRegion === "Americas" ? "selected" : ""}
+          >
+            Americas
+          </li>
+          <li
+            onClick={() => handleSelectOption("Asia")}
+            className={selectedRegion === "Asia" ? "selected" : ""}
+          >
+            Asia
+          </li>
+          <li
+            onClick={() => handleSelectOption("Europe")}
+            className={selectedRegion === "Europe" ? "selected" : ""}
+          >
+            Europe
+          </li>
         </ul>
       )}
     </div>

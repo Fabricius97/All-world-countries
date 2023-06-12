@@ -1,0 +1,32 @@
+.countryCard {
+  border-radius: 5px;
+  width: 300px;
+}
+
+.countryCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+  max-width: 1329px;
+}
+
+.countryCard img {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cardText {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.cardText span {
+  font-weight: 600;
+}

@@ -4,6 +4,7 @@
   align-items: center;
   height: 40px;
   padding: 25px 50px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode {
@@ -28,4 +29,16 @@
 .dark-light-btn img {
   height: 25px;
   width: 25px;
+}
+
+@media (max-width: 741px) {
+  .navbar-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 374px) {
+  .navbar {
+    padding: 25px 25px;
+  }
 }

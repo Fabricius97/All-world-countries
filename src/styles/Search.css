@@ -6,4 +6,11 @@
   border-radius: 5px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
   font-weight: bold;
+  outline: none;
+}
+
+@media (max-width: 741px) {
+  .search-bar {
+    width: 300px;
+  }
 }

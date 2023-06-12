@@ -1,14 +1,37 @@
 .homePage {
   display: flex;
-  border: 1px solid red;
   width: 100%;
-  padding: 50px;
+  padding: 50px 50px;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
 }
 
 .searchAndFilter {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  border: 1px solid red;
+  max-width: 1329px;
   align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 1426px) {
+  .searchAndFilter {
+    max-width: 988px;
+  }
+}
+
+@media (max-width: 1083px) {
+  .searchAndFilter {
+    max-width: 647px;
+  }
+}
+
+@media (max-width: 741px) {
+  .searchAndFilter {
+    flex-direction: column;
+    width: 300px;
+    align-items: flex-start;
+    gap: 40px;
+  }
 }

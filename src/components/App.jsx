@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import HomePage from "./HomePage";
+import CountryPage from "./CountryPage";
 import "./../styles/App.css";
+
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -17,7 +20,10 @@ const App = () => {
         isDarkMode={isDarkMode}
         handleDarkModeToggle={handleDarkModeToggle}
       />
-      <HomePage isDarkMode={isDarkMode} />
+      <Routes>
+        <Route path="/" element={<HomePage isDarkMode={isDarkMode} />} />
+        <Route path="/page" element={<CountryPage />} />
+      </Routes>
     </div>
   );
 };
