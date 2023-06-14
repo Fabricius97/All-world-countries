@@ -1,0 +1,100 @@
+.countryPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.countryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 20px;
+}
+
+.country {
+  display: flex;
+  gap: 60px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  gap: 5px;
+  font-weight: bold;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.countryFlag img {
+  height: 250px;
+  width: 350px;
+  object-fit: fill;
+  border-radius: 5px;
+}
+
+.countryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 14px;
+}
+
+.countryInfoText {
+  display: flex;
+  gap: 50px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.leftInfo,
+.rightInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.borderCountries {
+  display: flex;
+  gap: 10px;
+}
+
+.borderCountriesbtn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.borderCountries button {
+  min-width: 100px;
+  padding: 0px 15px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  height: 30px;
+  border-radius: 5px;
+}
+
+@media (max-width: 767px) {
+  .country {
+    flex-direction: column;
+  }
+
+  .borderCountries {
+    flex-direction: column;
+  }
+
+  .countryFlag img {
+    height: 200px;
+    width: 300px;
+  }
+}

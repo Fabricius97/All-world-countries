@@ -24,29 +24,21 @@ const App = () => {
   const appBackgroundColor = isDarkMode ? "#202C36" : "#F2F2F2";
 
   useEffect(() => {
-    fetch(
-      "https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const filteredData = data.filter(
-          (country) =>
-            country.region === "Asia" ||
-            country.region === "Europe" ||
-            country.region === "Americas" ||
-            country.region === "Africa"
-        );
-        setFilteredData(filteredData);
-      })
-      .catch((error) => {
-        console.log("An error occurred while fetching country data:", error);
-      });
+    // Filter the data based on regions
+    const filteredData = data.filter(
+      (country) =>
+        country.region === "Asia" ||
+        country.region === "Europe" ||
+        country.region === "Americas" ||
+        country.region === "Africa"
+    );
+    setFilteredData(filteredData);
   }, []);
 
   const handleCountryPageNavigation = (name) => {
     // Validate the country name using the filteredData
     const isValidCountry = filteredData.some(
-      (country) => country.name.common.toLowerCase() === name.toLowerCase()
+      (country) => country.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isValidCountry) {
@@ -54,6 +46,13 @@ const App = () => {
     } else {
       console.log("Invalid country name:", name);
     }
+  };
+
+  const formatPopulation = (population) => {
+    const formattedPopulation = population
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return formattedPopulation;
   };
 
   return (
@@ -70,16 +69,24 @@ const App = () => {
               isDarkMode={isDarkMode}
               filteredData={filteredData}
               handleCountryPageNavigation={handleCountryPageNavigation}
+              formatPopulation={formatPopulation}
             />
           }
         />
-        {data.map((stoffe, index) => {
+        {filteredData.map((country, index) => (
           <Route
             key={index}
-            path={`/countries/:name`}
-            element={<CountryPage stoffe={stoffe} />}
-          />;
-        })}
+            path={`/countries/${country.name}`}
+            element={
+              <CountryPage
+                country={country}
+                isDarkMode={isDarkMode}
+                filteredData={filteredData}
+                formatPopulation={formatPopulation}
+              />
+            }
+          />
+        ))}
       </Routes>
     </div>
   );

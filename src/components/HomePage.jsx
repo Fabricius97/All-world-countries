@@ -4,10 +4,12 @@ import Search from "./Search";
 import Dropdown from "./Dropdown";
 import CountryCard from "./CountryCard";
 
+import data from "../../data.json";
+
 const HomePage = ({
   isDarkMode,
-  filteredData,
   handleCountryPageNavigation,
+  formatPopulation,
 }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
@@ -15,17 +17,18 @@ const HomePage = ({
 
   useEffect(() => {
     handleSearch(searchTerm);
-  }, [filteredData, selectedRegion, searchTerm]);
+  }, [selectedRegion, searchTerm]);
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
 
-    const filteredResults = filteredData.filter((country) => {
-      const matchesSearchTerm = country.name.common
+    const filteredResults = data.filter((country) => {
+      const matchesSearchTerm = country.name
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
       const matchesRegion =
-        selectedRegion === "" || country.region === selectedRegion;
+        (selectedRegion === "" || country.region === selectedRegion) &&
+        ["Asia", "Europe", "Americas", "Africa"].includes(country.region);
 
       return matchesSearchTerm && matchesRegion;
     });
@@ -50,8 +53,9 @@ const HomePage = ({
       <div className="cards">
         <CountryCard
           isDarkMode={isDarkMode}
-          countryData={searchResults.length > 0 ? searchResults : filteredData}
+          countryData={searchResults.length > 0 ? searchResults : data}
           handleCountryPageNavigation={handleCountryPageNavigation}
+          formatPopulation={formatPopulation}
         />
       </div>
     </div>

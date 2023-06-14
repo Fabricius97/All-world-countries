@@ -2,14 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/CountryCard.css";
 
-const CountryCard = ({ isDarkMode, countryData }) => {
-  const formatPopulation = (population) => {
-    const formattedPopulation = population
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return formattedPopulation;
-  };
-
+const CountryCard = ({ isDarkMode, countryData, formatPopulation }) => {
   return (
     <div className="countryCardContainer">
       {countryData.map((country, index) => (
@@ -18,14 +11,14 @@ const CountryCard = ({ isDarkMode, countryData }) => {
           className={`countryCard ${isDarkMode ? "dark-mode" : "light-mode"}`}
         >
           <Link
-            to={`/countries/${country.name.common}`} // Använd unik identifierare här
+            to={`/countries/${country.name}`}
             className={`countryCard-link ${
               isDarkMode ? "dark-mode" : "light-mode"
             }`}
           >
             <img src={country.flags.png} alt="Flag" />
             <div className="cardText">
-              <h3>{country.name.common}</h3>
+              <h3>{country.name}</h3>
               <p>
                 <span>Population:</span> {formatPopulation(country.population)}
               </p>
