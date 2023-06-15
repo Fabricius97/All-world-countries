@@ -97,4 +97,11 @@
     height: 200px;
     width: 300px;
   }
+
+  .countryInfoText {
+    flex-direction: column;
+  }
+  .countryContainer {
+    margin-top: 100px;
+  }
 }
