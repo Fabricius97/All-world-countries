@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import "../styles/CountryPage.css";
 import lightbtn from "../assets/images/arrow-left-dark.svg";
 import darkbtn from "../assets/images/arrow-left.svg";
@@ -13,10 +12,6 @@ const CountryPage = ({
 }) => {
   const selectedCountry = country;
   const navigate = useNavigate();
-
-  if (!selectedCountry) {
-    return <div>Country not found!</div>;
-  }
 
   const btnImage = isDarkMode ? darkbtn : lightbtn;
   const textColor = isDarkMode ? "#ffffff" : "#000000";
@@ -39,14 +34,13 @@ const CountryPage = ({
     }
 
     const fullBorderNames = selectedCountry.borders
-      .filter((borderCode) => borderCode) // Filter out null or undefined values
+      .filter((borderCode) => borderCode)
       .map((borderCode) => {
         const borderCountry = filteredData.find(
           (country) => country.alpha3Code === borderCode
         );
         return borderCountry ? borderCountry.name : borderCode;
       });
-    console.log(fullBorderNames);
     return fullBorderNames;
   };
 
@@ -114,10 +108,7 @@ const CountryPage = ({
               </div>
               <div className="borderCountriesbtn">
                 {fullBorderNames.map((border, index) => (
-                  <Link
-                    key={index}
-                    to={`/countries/${border}`} // Link to the corresponding country
-                  >
+                  <Link key={index} to={`/countries/${border}`}>
                     <button
                       key={index}
                       style={{
@@ -139,5 +130,3 @@ const CountryPage = ({
 };
 
 export default CountryPage;
-
-// {`countryPage ${isDarkMode ? "dark-mode" : "light-mode"}`}
