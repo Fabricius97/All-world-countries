@@ -7,7 +7,7 @@ const Search = ({ onSearch, isDarkMode }) => {
   useEffect(() => {
     const timerId = setTimeout(() => {
       onSearch(searchTerm);
-    }, 300); // Vänta 300 ms innan sökningen aktiveras
+    }, 0); // Vänta 0 ms innan sökningen aktiveras
 
     return () => {
       clearTimeout(timerId);
